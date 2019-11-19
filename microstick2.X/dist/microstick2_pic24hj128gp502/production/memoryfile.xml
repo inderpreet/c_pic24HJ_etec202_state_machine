@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/microstick2_pic24hj128gp502/production/microstick2.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>4</used>
+      <free>8188</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>131328</length>
+      <used>792</used>
+      <free>130536</free>
+    </memory>
+  </executable>
+</project>
