@@ -128,22 +128,39 @@ void do_state_machine(){
         case WAIT_FOR_RELEASE:
             if(SW1 == 1){   // When Button is Released
                 if(LED1 == 0){  // Slower
-                    PR1 = SLOWER;
+                    system_state = SET_SLOWER;
                 } else {        // Faster
-                    PR1 = FASTER; 
+                    system_state = SET_FASTER;
                }
             }            
             break;
         
         case SET_SLOWER:
+            PR1 = SLOWER;
+            system_state = IDLE_NEW;
             break;
         case SET_FASTER:
+            PR1 = FASTER; 
+            system_state = IDLE_NEW;
             break;
         case IDLE_NEW:
+            if(_T1IF == 1){
+                _T1IF = 0;
+                // LED1 = !LED1;
+                system_state = BLINK_NEW;
+                small_delay();
+            }
+            if (SW1 == 0 ){
+                system_state  = WAIT_FOR_RELEASE_AND_GO_TO_IDLE;
+            }
             break;
         case BLINK_NEW:
+            system_state = IDLE_NEW;
             break;
         case WAIT_FOR_RELEASE_AND_GO_TO_IDLE:
+            if(SW1 == 1){
+                system_state = IDLE;
+            }
             break;
         default:
             system_state = IDLE;
