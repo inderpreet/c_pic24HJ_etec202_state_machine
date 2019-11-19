@@ -17,14 +17,15 @@
 //------------------------------------------------------------------------------
 // Custom types
 typedef enum {
-    INIT,
-            LED_ON,
-            LED_OFF,
-            S1,
-            S2,
-            S3,
-            S4,
-            S5
+    IDLE,
+            BLINK,
+            WAIT_FOR_RELEASE,
+            SET_SLOWER,
+            SET_FASTER,
+            IDLE_NEW,
+            BLINK_NEW,
+            WAIT_FOR_RELEASE_AND_GO_TO_IDLE,
+            
             
 }eStates;
 
@@ -59,7 +60,7 @@ void setup_timer(){
 
 void config_lab7(){
     setup_timer();
-    system_state = INIT;
+    system_state = IDLE;
     heartbeat_state = LED_OFF_STATE;
     LED1_TRIS = 0;   // OUTPUT
     SW1_TRIS =1;    // INPUT
@@ -85,7 +86,7 @@ void small_delay(){
 
 void do_heartbeat(){    
     if(_T1IF == 1 ){
-        _T1IF = 0;
+        //_T1IF = 0;
         switch ( heartbeat_state ){
             case LED_ON_STATE:
                 LED = 1;
@@ -103,17 +104,43 @@ void do_heartbeat(){
 
 void do_state_machine(){
     switch ( system_state ){
-        case S1:
-            small_delay();
-            LED1=0;
-            system_state = INIT;
+        case IDLE:
+            if(_T1IF == 1){
+                _T1IF = 0;
+                // LED1 = !LED1;
+                system_state = BLINK;
+                small_delay();
+            }
+            if(SW1 == 0){
+                system_state = WAIT_FOR_RELEASE;
+                
+            }
             break;
-        case INIT:
+        case BLINK:
+            LED1 = ! LED1;
+            system_state = IDLE;
+            break;
+        case WAIT_FOR_RELEASE:
+            if(SW1 == 1){   // When Button is Released
+                if(LED1 == 0){  // Slower
+                    
+                } else {        // Faster
+
+                }
+            }            
+            break;
+        case SET_SLOWER:
+            break;
+        case SET_FASTER:
+            break;
+        case IDLE_NEW:
+            break;
+        case BLINK_NEW:
+            break;
+        case WAIT_FOR_RELEASE_AND_GO_TO_IDLE:
+            break;
         default:
-            small_delay();
-            LED1 = 1;
-            system_state = S1;
-            break;
+            system_state = IDLE;
     }
 }
 // main
