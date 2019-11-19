@@ -14,6 +14,10 @@
 #define SW1_TRIS    _TRISB13
 #define SEL1_TRIS   _TRISB12
 
+#define NORMAL      0x7A12
+#define SLOWER      0xF424
+#define FASTER      0x3D09
+
 //------------------------------------------------------------------------------
 // Custom types
 typedef enum {
@@ -63,7 +67,7 @@ void config_lab7(){
     system_state = IDLE;
     heartbeat_state = LED_OFF_STATE;
     LED1_TRIS = 0;   // OUTPUT
-    SW1_TRIS =1;    // INPUT
+    SW1_TRIS = 1;    // INPUT
     SEL1_TRIS = 1;  // INPUT
     LED_TRIS = 0;   // OUTPUT
 }
@@ -111,24 +115,26 @@ void do_state_machine(){
                 system_state = BLINK;
                 small_delay();
             }
-            if(SW1 == 0){
+            if(SW1 == 1){
                 system_state = WAIT_FOR_RELEASE;
-                
             }
             break;
+            
         case BLINK:
             LED1 = ! LED1;
             system_state = IDLE;
             break;
+        
         case WAIT_FOR_RELEASE:
             if(SW1 == 1){   // When Button is Released
                 if(LED1 == 0){  // Slower
-                    
+                    PR1 = SLOWER;
                 } else {        // Faster
-
-                }
+                    PR1 = FASTER; 
+               }
             }            
             break;
+        
         case SET_SLOWER:
             break;
         case SET_FASTER:
@@ -147,10 +153,13 @@ void do_state_machine(){
 
 int main() 
 {
+    volatile unsigned int temp;
     config_lab7();
     while(1){
-        do_heartbeat();
-        do_state_machine();
+//        do_heartbeat();
+//        do_state_machine();
+        LED = SEL1;
+        temp = SEL1;
     }
     return 0;
 }
