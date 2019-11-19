@@ -12,7 +12,7 @@ alt="Demo Video" width="240" height="180" border="10" /></a>
 
 Long Description
 
-![Block Diagram](./docs/images/amazing_lab_problem.png)
+![Block Diagram](./amazing_lab_problem.png)
 
 ## Prerequisites
 
