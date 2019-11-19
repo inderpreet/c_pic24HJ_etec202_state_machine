@@ -81,10 +81,10 @@ xc16-ld 1.36 (B)
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce               0x13a           0x1d7  (471)
-.dinit                       0x408                 0x8             0xc  (12)
+.text                        0x2ce                0xb4           0x10e  (270)
+.dinit                       0x382                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x318  (792) <1%
+                 Total "program" memory used (bytes):          0x24f  (591) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
@@ -126,9 +126,10 @@ External Symbols in Program Memory (by address):
                   0x0002ce                  _setup_timer
                   0x0002e8                  _config_lab7
                   0x0002fe                  _my_delay
-                  0x000310                  _do_heartbeat
-                  0x000334                  _do_state_machine
-                  0x000400                  _main
+                  0x000310                  _small_delay
+                  0x000336                  _do_heartbeat
+                  0x00035a                  _do_state_machine
+                  0x000378                  _main
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
@@ -144,11 +145,12 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0002e8                  _config_lab7
-                  0x000310                  _do_heartbeat
-                  0x000334                  _do_state_machine
-                  0x000400                  _main
+                  0x000336                  _do_heartbeat
+                  0x00035a                  _do_state_machine
+                  0x000378                  _main
                   0x0002fe                  _my_delay
                   0x0002ce                  _setup_timer
+                  0x000310                  _small_delay
 
 Memory Configuration
 
@@ -235,17 +237,17 @@ usercode
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBSP‡
+ __FBS.sec        0xf80000          0x2 /CW/_FBSX.
                   0xf80000                  __FBS.sec
 
 __FSS             0xf80002          0x2
  *(__FSS.sec*)
- __FSS.sec        0xf80002          0x2 /CW/_FSS†
+ __FSS.sec        0xf80002          0x2 /CW/_FSS@þ~
                   0xf80002                  __FSS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS
+ __FGS.sec        0xf80004          0x2 /CW/_FGS ¾~
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -278,29 +280,29 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xe36
+.debug_info       0x000000        0xcfd
  *(.debug_info)
  .debug_info      0x000000        0x160 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_info      0x000160        0xcd6 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_info      0x000160        0xb9d build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x153
+.debug_abbrev     0x000000        0x177
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_abbrev    0x00001f        0x134 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_abbrev    0x00001f        0x158 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_line       0x000000        0x156
+.debug_line       0x000000        0x13c
  *(.debug_line)
  .debug_line      0x000000         0x1a build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_line      0x00001a        0x13c build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_line      0x00001a        0x122 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_frame      0x000000         0xbc
+.debug_frame      0x000000         0xd8
  *(.debug_frame)
- .debug_frame     0x000000         0xbc build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_frame     0x000000         0xd8 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_str        0x000000         0x69
+.debug_str        0x000000         0x5f
  *(.debug_str)
- .debug_str       0x000000         0x69 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_str       0x000000         0x5f build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -309,10 +311,10 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x93
+                  0x000000         0xa3
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x93 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x000000         0xa3 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1191,29 +1193,29 @@ LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libc-elf.a
 END GROUP
 OUTPUT(dist/microstick2_pic24hj128gp502/production/microstick2.X.production.elf elf32-pic30)
-LOAD /CW/_FGS
-LOAD /CW/_FSS†
-LOAD /CW/_FBSP‡
+LOAD /CW/_FGS ¾~
+LOAD /CW/_FSS@þ~
+LOAD /CW/_FBSX.
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018        0x13c
+                  0x000018        0x11d
  .debug_pubtypes
                   0x000018         0x12 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
  .debug_pubtypes
-                  0x00002a        0x12a build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x00002a        0x10b build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 __c30_signature
-                  0x000154         0x18
+                  0x000135         0x18
  __c30_signature
-                  0x000154          0x6 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
+                  0x000135          0x6 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
  __c30_signature
-                  0x00015a          0x6 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x00013b          0x6 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
  __c30_signature
-                  0x000160          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000141          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000166          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x000147          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
 
 .nbss               0x0800          0x4
  .nbss              0x0800          0x4 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
@@ -1238,14 +1240,15 @@ __c30_signature
 .config_IESO      0xf80006          0x2
  .config_IESO     0xf80006          0x2 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
 
-.text             0x0002ce        0x13a
- .text            0x0002ce        0x13a build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+.text             0x0002ce         0xb4
+ .text            0x0002ce         0xb4 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
                   0x0002ce                  _setup_timer
                   0x0002e8                  _config_lab7
                   0x0002fe                  _my_delay
-                  0x000310                  _do_heartbeat
-                  0x000334                  _do_state_machine
-                  0x000400                  _main
+                  0x000310                  _small_delay
+                  0x000336                  _do_heartbeat
+                  0x00035a                  _do_state_machine
+                  0x000378                  _main
 
-.dinit            0x000408          0x8
- .dinit           0x000408          0x8 data_init
+.dinit            0x000382          0x8
+ .dinit           0x000382          0x8 data_init

@@ -1,16 +1,20 @@
-
 #include <stdint.h>
 #include <xc.h>
 #include "main.h"
 
+// OUTPUTs
 #define LED1        _LATB14
+
+// INPUTS
 #define SW1         _RB13
 #define SEL1        _RB12
 
+// Tristate buffers
 #define LED1_TRIS   _TRISB14
 #define SW1_TRIS    _TRISB13
 #define SEL1_TRIS   _TRISB12
 
+//------------------------------------------------------------------------------
 // Custom types
 typedef enum {
     INIT,
@@ -35,7 +39,7 @@ eHeartbeat heartbeat_state;
 
 // functions 
 void setup_timer(){
-        /* Initialize Timer 1
+     /* Initialize Timer 1
      * Each configuration sets the MCU's oscillator to 32MHz (see the respective
      * "system.c" for configuration bits).  For the LED to blink
      * at a rate of 1Hz, it must be toggled at 2Hz.
@@ -48,9 +52,9 @@ void setup_timer(){
     _T1IF = 0;
     _T1IE = 0;
     TMR1 = 0x0000;
-    PR1 = 0x7A12;
-    T1CONbits.TCKPS = 3;
-    T1CONbits.TON = 1;
+    PR1 = 0x7A12;               // Configures how fast or slow
+    T1CONbits.TCKPS = 3;        // Pre-scaler for the Timer
+    T1CONbits.TON = 1;          // Turns on the Timer
 }
 
 void config_lab7(){
@@ -66,6 +70,17 @@ void config_lab7(){
 void my_delay(){
     while(_T1IF == 0){} 
     _T1IF = 0;
+}
+
+void small_delay(){
+    unsigned int i, j = 10;
+    while ( j != 0){
+        j--;
+        i = 20000;
+        while(i!=0){
+            i--;
+        }
+    }
 }
 
 void do_heartbeat(){    
@@ -88,45 +103,17 @@ void do_heartbeat(){
 
 void do_state_machine(){
     switch ( system_state ){
-
         case S1:
+            small_delay();
             LED1=0;
-            if(!SW1){
-                while(!SW1){}
-                LED1 = 1;
-                system_state = S2;
-            }
-            break;
-        case S2:
-            if(!SW1){
-                while(!SW1){}
-                system_state = S3;
-            }
-            break;
-        case S3:
-            if(_T1IF == 1){
-                LED1 = !LED1;
-                _T1IF=0;
-            }
-            if(!SW1){
-                while(!SW1){}
-                system_state = S4;
-                LED1 = 0;
-            }
-            break;
-        case S4:
-            if(!SW1){
-                while(!SW1){}
-                system_state = S1;
-            }
-            break;
-        case S5:
+            system_state = INIT;
             break;
         case INIT:
         default:
-            break;            break;
-
-            
+            small_delay();
+            LED1 = 1;
+            system_state = S1;
+            break;
     }
 }
 // main
@@ -136,6 +123,7 @@ int main()
     config_lab7();
     while(1){
         do_heartbeat();
+        do_state_machine();
     }
     return 0;
 }
