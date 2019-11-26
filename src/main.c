@@ -15,8 +15,8 @@
 #define SEL1_TRIS   _TRISB12
 
 #define NORMAL      0x7A12
-#define SLOWER      0xF424
-#define FASTER      0x3D09
+#define SLOWER      0xFF24
+#define FASTER      0x3009
 
 //------------------------------------------------------------------------------
 // Custom types
@@ -63,6 +63,7 @@ void setup_timer(){
 }
 
 void config_lab7(){
+    AD1PCFGL = 0x0FFFF;
     setup_timer();
     system_state = IDLE;
     heartbeat_state = LED_OFF_STATE;
@@ -111,17 +112,15 @@ void do_state_machine(){
         case IDLE:
             if(_T1IF == 1){
                 _T1IF = 0;
-                // LED1 = !LED1;
                 system_state = BLINK;
-                small_delay();
             }
-            if(SW1 == 1){
+            if(SW1 == 0){
                 system_state = WAIT_FOR_RELEASE;
             }
             break;
             
         case BLINK:
-            LED1 = ! LED1;
+            LED1 = !LED1;
             system_state = IDLE;
             break;
         
@@ -155,11 +154,14 @@ void do_state_machine(){
             }
             break;
         case BLINK_NEW:
+            LED1= !LED1;
             system_state = IDLE_NEW;
             break;
         case WAIT_FOR_RELEASE_AND_GO_TO_IDLE:
             if(SW1 == 1){
+                PR1 = NORMAL;
                 system_state = IDLE;
+                small_delay();  // debounce
             }
             break;
         default:
@@ -170,13 +172,13 @@ void do_state_machine(){
 
 int main() 
 {
-    volatile unsigned int temp;
+//    volatile unsigned int temp;
     config_lab7();
     while(1){
 //        do_heartbeat();
-//        do_state_machine();
-        LED = SEL1;
-        temp = SEL1;
+        do_state_machine();
+//        LED1 = SW1;
+//        temp = SW1;
     }
     return 0;
 }

@@ -70,6 +70,7 @@ OBJECTFILES=${OBJECTDIR}/_ext/1288304213/system.o ${OBJECTDIR}/_ext/1360937237/m
 SOURCEFILES=../src/system_config/microstick2_pic24hj128gp502/system.c ../src/main.c
 
 
+
 CFLAGS=
 ASFLAGS=
 LDLIBSOPTIONS=

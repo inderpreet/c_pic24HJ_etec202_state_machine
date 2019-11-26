@@ -15,23 +15,23 @@
 # $ makeMP_CC="/opt/microchip/mplabc30/v3.30c/bin/pic30-gcc" ...  
 #
 SHELL=cmd.exe
-PATH_TO_IDE_BIN=G:/Program Files (x86)/Microchip/MPLABX/v5.20/mplab_platform/platform/../mplab_ide/modules/../../bin/
+PATH_TO_IDE_BIN=D:/Program Files (x86)/Microchip/MPLABX/v5.25/mplab_platform/platform/../mplab_ide/modules/../../bin/
 # Adding MPLAB X bin directory to path.
-PATH:=G:/Program Files (x86)/Microchip/MPLABX/v5.20/mplab_platform/platform/../mplab_ide/modules/../../bin/:$(PATH)
+PATH:=D:/Program Files (x86)/Microchip/MPLABX/v5.25/mplab_platform/platform/../mplab_ide/modules/../../bin/:$(PATH)
 # Path to java used to run MPLAB X when this makefile was created
-MP_JAVA_PATH="G:\Program Files (x86)\Microchip\MPLABX\v5.20\sys\java\jre1.8.0_181/bin/"
+MP_JAVA_PATH="D:\Program Files (x86)\Microchip\MPLABX\v5.25\sys\java\jre1.8.0_181/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="G:\Program Files (x86)\Microchip\xc16\v1.36\bin\xc16-gcc.exe"
+MP_CC="D:\Program Files (x86)\Microchip\xc16\v1.41\bin\xc16-gcc.exe"
 # MP_CPPC is not defined
 # MP_BC is not defined
-MP_AS="G:\Program Files (x86)\Microchip\xc16\v1.36\bin\xc16-as.exe"
-MP_LD="G:\Program Files (x86)\Microchip\xc16\v1.36\bin\xc16-ld.exe"
-MP_AR="G:\Program Files (x86)\Microchip\xc16\v1.36\bin\xc16-ar.exe"
-DEP_GEN=${MP_JAVA_PATH}java -jar "G:/Program Files (x86)/Microchip/MPLABX/v5.20/mplab_platform/platform/../mplab_ide/modules/../../bin/extractobjectdependencies.jar"
-MP_CC_DIR="G:\Program Files (x86)\Microchip\xc16\v1.36\bin"
+MP_AS="D:\Program Files (x86)\Microchip\xc16\v1.41\bin\xc16-as.exe"
+MP_LD="D:\Program Files (x86)\Microchip\xc16\v1.41\bin\xc16-ld.exe"
+MP_AR="D:\Program Files (x86)\Microchip\xc16\v1.41\bin\xc16-ar.exe"
+DEP_GEN=${MP_JAVA_PATH}java -jar "D:/Program Files (x86)/Microchip/MPLABX/v5.25/mplab_platform/platform/../mplab_ide/modules/../../bin/extractobjectdependencies.jar"
+MP_CC_DIR="D:\Program Files (x86)\Microchip\xc16\v1.41\bin"
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-MP_AS_DIR="G:\Program Files (x86)\Microchip\xc16\v1.36\bin"
-MP_LD_DIR="G:\Program Files (x86)\Microchip\xc16\v1.36\bin"
-MP_AR_DIR="G:\Program Files (x86)\Microchip\xc16\v1.36\bin"
+MP_AS_DIR="D:\Program Files (x86)\Microchip\xc16\v1.41\bin"
+MP_LD_DIR="D:\Program Files (x86)\Microchip\xc16\v1.41\bin"
+MP_AR_DIR="D:\Program Files (x86)\Microchip\xc16\v1.41\bin"
 # MP_BC_DIR is not defined
