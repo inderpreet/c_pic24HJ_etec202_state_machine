@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/workspace/projects/Centennial/c_pic24HJ_etec202_state_machine/src/main.c</file>
+            <file>file:/D:/workspace/projects/centennial/c_pic24HJ_etec202_state_machine/src/system_config/microstick2_pic24hj128gp502/system.c</file>
+            <file>file:/D:/workspace/projects/centennial/c_pic24HJ_etec202_state_machine/src/system_config/microstick2_pic24hj128gp502/system_config.h</file>
+            <file>file:/D:/workspace/projects/centennial/c_pic24HJ_etec202_state_machine/microstick2.X/newfile</file>
+            <file>file:/D:/workspace/projects/centennial/c_pic24HJ_etec202_state_machine/src/main.h</file>
+            <file>file:/D:/workspace/projects/centennial/c_pic24HJ_etec202_state_machine/src/main.c</file>
         </group>
     </open-files>
 </project-private>

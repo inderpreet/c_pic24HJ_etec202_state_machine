@@ -1,0 +1,7 @@
+uint8_t* led_ptr = 0x02CC;
+uint8_t* leda_ptr = 0x02c4;
+void toggle_led(){
+    *( (uint16_t*)led_ptr) ^= 0x4000;
+//    *(led_ptr+1) ^= 0x4000;
+    *leda_ptr ^= 0x01;
+}

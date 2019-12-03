@@ -1,21 +1,21 @@
-Microchip Technology Inc, v1.41 (A)
+Microchip Technology Inc, v1.36 (B)
 
 Tool Name:
-  d:\program files (x86)\microchip\xc16\v1.41\bin\bin\..\bin/elf-ld.exe
+  g:\program files (x86)\microchip\xc16\v1.36\bin\bin\..\bin/elf-ld.exe
 
 Command:
   -p24HJ128GP502 \
   -o \
   dist/microstick2_pic24hj128gp502/production/microstick2.X.production.elf \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/.. \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/PIC24E/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/PIC24F/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/PIC24H/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/dsPIC30F/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/dsPIC33C/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/dsPIC33E/gld \
-  -Ld:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../support/dsPIC33F/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/.. \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/PIC24E/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/PIC24F/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/PIC24H/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC30F/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33C/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33E/gld \
+  -Lg:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../support/dsPIC33F/gld \
   build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o \
   build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o \
   --defsym=__MPLAB_BUILD=1 \
@@ -45,11 +45,11 @@ Command:
 Optional library libp24HJ128GP502.a not found
 Archive member included because of file (symbol)
 
-d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
                               (__resetPRI)
-d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
-                              d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
-d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
+g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                              g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
+g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
                               (__crt_start_mode_normal)
 
 
@@ -74,21 +74,17 @@ CodeGuard RAM Memory:
   boot    (none)
 
 
-xc16-ld 1.41 (A)
-
-Default Code Model: Small
-Default Data Model: Large
-Default Scalar Model: Small
+xc16-ld 1.36 (B)
 
 "program" Memory  [Origin = 0x200, Length = 0x15600]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce               0x1a0           0x270  (624)
-.dinit                       0x46e                 0x8             0xc  (12)
+.text                        0x2ce               0x184           0x246  (582)
+.dinit                       0x452                0x12            0x1b  (27)
 
-                 Total "program" memory used (bytes):          0x3b1  (945) <1%
+                 Total "program" memory used (bytes):          0x396  (918) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
@@ -96,8 +92,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                        0x800                   0             0x4  (4)
+.ndata                       0x804                   0             0x4  (4)
 
-                 Total "data" memory used (bytes):            0x4  (4) <1%
+                 Total "data" memory used (bytes):            0x8  (8) <1%
 
 
 Dynamic Memory Usage
@@ -105,21 +102,23 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x804                              0x1ffc  (8188)
+stack                        0x808                              0x1ff8  (8184)
 
-                 Maximum dynamic memory (bytes):         0x1ffc  (8188)
-
-Note: Project is using a large data memory model when small data memory model is sufficient.
+                 Maximum dynamic memory (bytes):         0x1ff8  (8184)
 
 
 External Symbols in Data Memory (by address):
 
                     0x0800                  _system_state
                     0x0802                  _heartbeat_state
+                    0x0804                  _led_ptr
+                    0x0806                  _leda_ptr
 
 External Symbols in Data Memory (by name):
 
                     0x0802                  _heartbeat_state
+                    0x0804                  _led_ptr
+                    0x0806                  _leda_ptr
                     0x0800                  _system_state
 
 External Symbols in Program Memory (by address):
@@ -129,13 +128,14 @@ External Symbols in Program Memory (by address):
                   0x000252                  __data_init_standard
                   0x000252                  __data_init
                   0x0002c8                  __DefaultInterrupt
-                  0x0002ce                  _setup_timer
-                  0x0002e8                  _config_lab7
-                  0x000302                  _my_delay
-                  0x000314                  _small_delay
-                  0x00033a                  _do_heartbeat
-                  0x00035c                  _do_state_machine
-                  0x000466                  _main
+                  0x0002ce                  _toggle_led
+                  0x0002ea                  _setup_timer
+                  0x000304                  _config_lab7
+                  0x00031e                  _my_delay
+                  0x000330                  _small_delay
+                  0x000356                  _do_heartbeat
+                  0x000378                  _do_state_machine
+                  0x00044a                  _main
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
@@ -150,13 +150,14 @@ External Symbols in Program Memory (by name):
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0002e8                  _config_lab7
-                  0x00033a                  _do_heartbeat
-                  0x00035c                  _do_state_machine
-                  0x000466                  _main
-                  0x000302                  _my_delay
-                  0x0002ce                  _setup_timer
-                  0x000314                  _small_delay
+                  0x000304                  _config_lab7
+                  0x000356                  _do_heartbeat
+                  0x000378                  _do_state_machine
+                  0x00044a                  _main
+                  0x00031e                  _my_delay
+                  0x0002ea                  _setup_timer
+                  0x000330                  _small_delay
+                  0x0002ce                  _toggle_led
 
 Memory Configuration
 
@@ -187,7 +188,7 @@ LOAD build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
 LOAD build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD p24HJ128GP502
-LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libfx-elf.a
+LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
                     0xf80004                  __FGS = 0xf80004
@@ -217,11 +218,11 @@ LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libfx-elf.a
 
 .text             0x000200         0xce
  *(.init)
- .init            0x000200         0x4c d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+ .init            0x000200         0x4c g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
                   0x000200                  __resetPRI
                   0x000200                  __reset
                   0x00023c                  __psv_init
- .init            0x00024c         0x7c d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+ .init            0x00024c         0x7c g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
                   0x000252                  __data_init_standard
                   0x000252                  __data_init
  *(.user_init)
@@ -234,7 +235,7 @@ LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libfx-elf.a
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x0002cc          0x2 d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
+                  0x0002cc          0x2 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
                   0x0002cc                  __crt_start_mode
                   0x0002cc                  __crt_start_mode_normal
 
@@ -243,17 +244,17 @@ usercode
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBSÐt¹
+ __FBS.sec        0xf80000          0x2 /CW/_FBSðz
                   0xf80000                  __FBS.sec
 
 __FSS             0xf80002          0x2
  *(__FSS.sec*)
- __FSS.sec        0xf80002          0x2 /CW/_FSSå¹
+ __FSS.sec        0xf80002          0x2 /CW/_FSSèz
                   0xf80002                  __FSS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGSà”¹
+ __FGS.sec        0xf80004          0x2 /CW/_FGSMz
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -286,29 +287,29 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xed7
+.debug_info       0x000000        0xf4b
  *(.debug_info)
  .debug_info      0x000000        0x166 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_info      0x000166        0xd71 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_info      0x000166        0xde5 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x177
+.debug_abbrev     0x000000        0x1a2
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_abbrev    0x00001f        0x158 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_abbrev    0x00001f        0x183 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_line       0x000000        0x168
+.debug_line       0x000000        0x16a
  *(.debug_line)
  .debug_line      0x000000         0x1a build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
- .debug_line      0x00001a        0x14e build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_line      0x00001a        0x150 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_frame      0x000000         0xd8
+.debug_frame      0x000000         0xf4
  *(.debug_frame)
- .debug_frame     0x000000         0xd8 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_frame     0x000000         0xf4 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
-.debug_str        0x000000         0x72
+.debug_str        0x000000         0x7b
  *(.debug_str)
- .debug_str       0x000000         0x72 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+ .debug_str       0x000000         0x7b build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -317,10 +318,10 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0xa3
+                  0x000000         0xcb
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0xa3 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x000000         0xcb build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1194,39 +1195,44 @@ __FUID3
                     0x0230                  UART2 = 0x230
                     0x0230                  _UART2 = 0x230
 START GROUP
-LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a
-LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libm-elf.a
-LOAD d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libc-elf.a
+LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a
+LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
+LOAD g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libc-elf.a
 END GROUP
 OUTPUT(dist/microstick2_pic24hj128gp502/production/microstick2.X.production.elf elf32-pic30)
-LOAD /CW/_FGSà”¹
-LOAD /CW/_FSSå¹
-LOAD /CW/_FBSÐt¹
+LOAD /CW/_FGSMz
+LOAD /CW/_FSSèz
+LOAD /CW/_FBSðz
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018        0x13c
+                  0x000018        0x148
  .debug_pubtypes
                   0x000018         0x12 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
  .debug_pubtypes
-                  0x00002a        0x12a build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x00002a        0x136 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
 
 __c30_signature
-                  0x000154         0x18
+                  0x000160         0x18
  __c30_signature
-                  0x000154          0x6 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
+                  0x000160          0x6 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
  __c30_signature
-                  0x00015a          0x6 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x000166          0x6 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
  __c30_signature
-                  0x000160          0x6 d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x00016c          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000166          0x6 d:/program files (x86)/microchip/xc16/v1.41/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x000172          0x6 g:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
 
 .nbss               0x0800          0x4
  .nbss              0x0800          0x4 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
                     0x0800                  _system_state
                     0x0802                  _heartbeat_state
+
+.ndata              0x0804          0x4
+ .ndata             0x0804          0x4 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                    0x0804                  _led_ptr
+                    0x0806                  _leda_ptr
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
@@ -1246,15 +1252,16 @@ __c30_signature
 .config_IESO      0xf80006          0x2
  .config_IESO     0xf80006          0x2 build/microstick2_pic24hj128gp502/production/_ext/1288304213/system.o
 
-.text             0x0002ce        0x1a0
- .text            0x0002ce        0x1a0 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
-                  0x0002ce                  _setup_timer
-                  0x0002e8                  _config_lab7
-                  0x000302                  _my_delay
-                  0x000314                  _small_delay
-                  0x00033a                  _do_heartbeat
-                  0x00035c                  _do_state_machine
-                  0x000466                  _main
+.text             0x0002ce        0x184
+ .text            0x0002ce        0x184 build/microstick2_pic24hj128gp502/production/_ext/1360937237/main.o
+                  0x0002ce                  _toggle_led
+                  0x0002ea                  _setup_timer
+                  0x000304                  _config_lab7
+                  0x00031e                  _my_delay
+                  0x000330                  _small_delay
+                  0x000356                  _do_heartbeat
+                  0x000378                  _do_state_machine
+                  0x00044a                  _main
 
-.dinit            0x00046e          0x8
- .dinit           0x00046e          0x8 data_init
+.dinit            0x000452         0x12
+ .dinit           0x000452         0x12 data_init

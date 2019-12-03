@@ -41,6 +41,13 @@ typedef enum{
 // global variables
 eStates system_state;
 eHeartbeat heartbeat_state;
+uint8_t* led_ptr = 0x02CC;
+uint8_t* leda_ptr = 0x02c4;
+void toggle_led(){
+    *( (uint16_t*)led_ptr) ^= 0x4000;
+//    *(led_ptr+1) ^= 0x4000;
+    *leda_ptr ^= 0x01;
+}
 
 // functions 
 void setup_timer(){
@@ -120,7 +127,8 @@ void do_state_machine(){
             break;
             
         case BLINK:
-            LED1 = !LED1;
+            //LED1 = !LED1;
+            toggle_led();
             system_state = IDLE;
             break;
         
@@ -154,7 +162,8 @@ void do_state_machine(){
             }
             break;
         case BLINK_NEW:
-            LED1= !LED1;
+//            LED1= !LED1;
+            toggle_led();
             system_state = IDLE_NEW;
             break;
         case WAIT_FOR_RELEASE_AND_GO_TO_IDLE:
